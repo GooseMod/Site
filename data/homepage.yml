@@ -9,9 +9,12 @@ banner:
       link: "https://updates.goosemod.com/#install"
       class: "primary"
       icon: "fa-cloud-download-alt"
-    - title: "Join Discord"
+    - title: "Discord"
       icon: "fa-comments"
       link: "https://goosemod.com/discord"
+    - title: "GitHub"
+      icon: "fa-code-branch"
+      link: "https://github.com/GooseMod/GooseMod"
 
 ### Highlight ###
 highlight:
