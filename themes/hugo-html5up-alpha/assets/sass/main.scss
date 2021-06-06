@@ -2112,7 +2112,7 @@ $bannerURL: "{{ (.Site.Data.homepage.banner.image | default "images/banner.jpg")
 	position: relative;
 	margin: 0 auto;
 
-	width: 200px;
+	width: 250px;
 }
 
 #stats-container > * {
