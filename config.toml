@@ -5,14 +5,11 @@ languageCode = "en-us"
 title = "GooseMod"
 baseURL = "https://goosemod.com"
 theme = "hugo-html5up-alpha"
-disqusShortname = ""
 
 [params]
   description = "A light, secure, and easy to use Discord mod"
-  images = ["images/pic01.jpg"]
+  images = []
   author = ""
   copyright = "Copyright © GooseNest Team. GooseMod is not affiliated with Discord."
   design = ""
-  mainSections = ["blog"]
-
-[menu]
+  mainSections = []
