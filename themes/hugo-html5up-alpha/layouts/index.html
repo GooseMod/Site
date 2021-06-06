@@ -20,6 +20,16 @@
                 </ul>
             {{ end }}
             {{ end }}
+
+            <section id="stats-container">
+                {{ with .Site.Data.homepage.stats }}
+                        {{ range .rows }}
+                            {{ range .items }}
+                                <h3><strong>{{ .stat }}</strong> {{ .text }}</h3>
+                            {{ end }}
+                        {{ end }}
+                {{ end }}
+            </section>
             </section>
 
             <!-- Main -->

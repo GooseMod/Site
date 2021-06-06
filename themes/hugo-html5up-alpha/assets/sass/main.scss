@@ -2107,3 +2107,86 @@ $bannerURL: "{{ (.Site.Data.homepage.banner.image | default "images/banner.jpg")
 			}
 
 	}
+
+#stats-container {
+	position: relative;
+	margin: 0 auto;
+
+	width: 300px;
+}
+
+#stats-container > * {
+	position: absolute;
+	animation-timing-function: ease-in-out;
+
+	margin: 0 auto;
+	width: 300px;
+	text-align: center;
+
+	margin: 0;
+
+	font-size: 2em;
+}
+
+#stats-container > :nth-child(1) {
+ animation: fade-1 15s infinite;
+}
+#stats-container > :nth-child(2) {
+ animation: fade-2 15s infinite;
+ opacity: 0;
+}
+#stats-container > :nth-child(3) {
+ animation: fade-3 15s infinite;
+ opacity: 0;
+}
+/* and more if there are more slides to show */
+@keyframes fade-1 {
+ 0% { opacity: 1; }
+ 16% { opacity: 0; }
+ 32% { opacity: 0; }
+ 48% { opacity: 0; }
+ 64% { opacity: 0; }
+ 80% { opacity: 0; }
+ 96% { opacity: 1; }
+}
+@keyframes fade-2 {
+	0% { opacity: 0; }
+	16% { opacity: 0; }
+	32% { opacity: 1; }
+	48% { opacity: 0; }
+	64% { opacity: 0; }
+	80% { opacity: 0; }
+	96% { opacity: 0; }
+}
+@keyframes fade-3 {
+	0% { opacity: 0; }
+	16% { opacity: 0; }
+	32% { opacity: 0; }
+	48% { opacity: 0; }
+	64% { opacity: 1; }
+	80% { opacity: 0; }
+	96% { opacity: 0; }
+}
+
+/* #stats-container > :nth-child(1) {
+  z-index: 3;
+  animation: xfade 15s -0s infinite;
+}
+
+#stats-container > :nth-child(2) {
+  z-index: 2;
+  animation: xfade 15s -5s infinite;
+}
+
+#stats-container > :nth-child(3) {
+  z-index: 1;
+  animation: xfade 15s -10s infinite;
+}
+
+@keyframes xfade {
+  0% {opacity: 0;}
+  20% {opacity: 1;}
+  33% {opacity: 1;}
+  53% {opacity: 0;}
+  100% {opacity: 0;}
+} */

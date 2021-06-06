@@ -46,6 +46,18 @@ features:
           accent: "accent6" #accent values are 1-8
           content: "GooseMod is one of the most secure mods due to it not using Node.js and only using themes and plugins from our Store."
 
+
+stats:
+  rows:
+    - items:
+      - text: "Themes"
+        stat: "89"
+      - text: "Plugins"
+        stat: "64"
+      - text: "Developers"
+        stat: "70"
+
+
 ### Blog ###
 blog:
   enable: false
