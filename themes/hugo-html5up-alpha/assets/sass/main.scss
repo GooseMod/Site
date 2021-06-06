@@ -2112,7 +2112,7 @@ $bannerURL: "{{ (.Site.Data.homepage.banner.image | default "images/banner.jpg")
 	position: relative;
 	margin: 0 auto;
 
-	width: 300px;
+	width: 200px;
 }
 
 #stats-container > * {
@@ -2120,12 +2120,10 @@ $bannerURL: "{{ (.Site.Data.homepage.banner.image | default "images/banner.jpg")
 	animation-timing-function: ease-in-out;
 
 	margin: 0 auto;
-	width: 300px;
 	text-align: center;
 
-	margin: 0;
-
-	font-size: 2em;
+	width: 100%;
+	text-align: center;
 }
 
 #stats-container > :nth-child(1) {

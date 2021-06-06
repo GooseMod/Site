@@ -8,7 +8,7 @@
             {{- partial "header.html" . -}}
 
             <!-- Banner -->
-            <section id="banner">
+            <nav id="banner">
             {{ if .Site.Data.homepage.banner.enable }}
             {{ with .Site.Data.homepage.banner }}
                 <h2><img src="https://goosemod.com/img/logo.jpg" style="height: 1em; vertical-align: bottom; border-radius: 50%; margin-right: 5px;"> {{ .title }}</h2>
@@ -30,7 +30,7 @@
                         {{ end }}
                 {{ end }}
             </section>
-            </section>
+            </nav>
 
             <!-- Main -->
             <section id="main" class="container">
