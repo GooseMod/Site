@@ -1,0 +1,58 @@
+### Banner ###
+banner:
+  enable: true
+  image: #default is 'images/banner.jpg'
+  title: "GooseMod"
+  content: "A light, secure, and easy to use Discord mod" # Change this if you want something other then the site description
+  buttons:
+    - title: "Install"
+      link: "https://updates.goosemod.com/#install"
+      class: "primary"
+      icon: "fa-cloud-download-alt"
+    - title: "Join Discord"
+      icon: "fa-comments"
+      link: "https://goosemod.com/discord"
+
+### Highlight ###
+highlight:
+  enable: false
+  header: "Introducing the ultimate mobile app <br /> for doing stuff with your phone"
+  content: "Blandit varius ut praesent nascetur eu penatibus nisi risus faucibus nunc ornare<br /> adipiscing nunc adipiscing. Condimentum turpis massa."
+  image: "images/pic01.jpg"
+
+### Features ###
+features:
+  enable: true
+  rows:
+    - items:
+      - title: "Light"
+        icon: "fa-bolt"
+        accent: "accent2" #accent values are 1-8
+        content: "GooseMod has a small, integrated, and modular codebase allowing it to be light and fast whilst also useful."
+      - title: "Store"
+        icon: "fa-store"
+        accent: "accent3" #accent values are 1-8
+        content: "We have a built-in Store where you can easily install themes and plugins, no opening your file manager or using a terminal."
+    - items:
+        - title: "Beautiful"
+          icon: "fa-eye"
+          accent: "accent4" #accent values are 1-8
+          content: "Our UI heavily matches Discord's own, letting you seamlessly enhance your Discord experience."
+        - title: "Secure"
+          icon: "fa-lock"
+          accent: "accent6" #accent values are 1-8
+          content: "GooseMod is one of the most secure mods due to it not using Node.js and only using themes and plugins from our Store."
+
+### Blog ###
+blog:
+  enable: false
+  # Leave header text blank to remove entire <section>
+  header: "Recent Posts"
+  buttonText: "Read More"
+  postCount: 2
+
+### Call to Action ###
+cta:
+  enable: false
+  header: "Sign up for beta access"
+  content: "Blandit varius ut praesent nascetur eu penatibus nisi risus faucibus nunc."

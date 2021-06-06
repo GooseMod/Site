@@ -1,0 +1,18 @@
+####### This is an EXAMPLE config file!!
+####### Changes made here will not effect demo site
+
+languageCode = "en-us"
+title = "GooseMod"
+baseURL = "https://goosemod.com"
+theme = "hugo-html5up-alpha"
+disqusShortname = ""
+
+[params]
+  description = "A light, secure, and easy to use Discord mod"
+  images = ["images/pic01.jpg"]
+  author = ""
+  copyright = "Copyright © GooseNest Team. GooseMod is not affiliated with Discord."
+  design = ""
+  mainSections = ["blog"]
+
+[menu]
