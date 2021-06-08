@@ -78,7 +78,7 @@
                   </header>
                   {{ end }}
                   <div class="row">
-                      {{ range first .postCount (where site.RegularPages "Type" "in" site.Params.mainSections) }}
+                      {{ range first .postCount site.RegularPages }}
                           <div class="col-6 col-12-narrower">
                               <section class="box special">
                                   {{ with partial "bannerURL" . }}
