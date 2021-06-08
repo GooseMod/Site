@@ -5,7 +5,7 @@ theme = "hugo-html5up-alpha"
 
 [params]
   description = "A light, secure, and easy to use Discord mod"
-  images = []
+  images = ["/img/logo.jpg"]
   author = ""
   copyright = "Copyright © GooseNest Team. GooseMod is not affiliated with Discord."
   design = ""
