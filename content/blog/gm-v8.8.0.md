@@ -1,12 +1,11 @@
 +++
-title = 'GooseMod v8.8.0'
+title = 'GooseMod v8.9.0'
 date = "2021-06-07"
-description = 'GooseMod v8.8.0 has been released, featuring improvements to the new home placement and some minor store UI improvements.'
+description = 'GooseMod v8.9.0 has been released, featuring improvements to the new home placement and some minor store UI improvements.'
 disableComments = true
-permalink = "/honk/"
 +++
 
-## **GooseMod v8.8.0** has been released! Highlights:
+## **GooseMod v8.9.0** has been released! Highlights:
 - ### **Improvements to the new home placement.**
 - ### **Minor store UI improvements.**
 
