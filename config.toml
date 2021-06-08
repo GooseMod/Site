@@ -1,9 +1,6 @@
-####### This is an EXAMPLE config file!!
-####### Changes made here will not effect demo site
-
 languageCode = "en-us"
 title = "GooseMod"
-baseURL = "https://goosemod.com"
+baseURL = "/"
 theme = "hugo-html5up-alpha"
 
 [params]
@@ -13,3 +10,33 @@ theme = "hugo-html5up-alpha"
   copyright = "Copyright © GooseNest Team. GooseMod is not affiliated with Discord."
   design = ""
   mainSections = ["blog"]
+
+## Markdown Settings
+enableEmoji = true
+[markup.goldmark]
+  [markup.goldmark.extensions]
+    definitionList = true
+    footnote = true
+    linkify = true
+    strikethrough = true
+    table = true
+    taskList = true
+    typographer = true
+  [markup.goldmark.parser]
+    attribute = true
+    autoHeadingID = true
+    autoHeadingIDType = "github"
+  [markup.goldmark.renderer]
+    hardWraps = false
+    unsafe = true
+    xhtml = false
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = false
+    hl_Lines = ""
+    lineNoStart = 1
+    lineNos = false
+    lineNumbersInTable = true
+    noClasses = true
+    style = "bw"
+    tabWidth = 4
