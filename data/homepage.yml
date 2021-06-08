@@ -60,9 +60,9 @@ stats:
 
 ### Blog ###
 blog:
-  enable: false
+  enable: true
   # Leave header text blank to remove entire <section>
-  header: "Recent Posts"
+  header: "News"
   buttonText: "Read More"
   postCount: 2
 

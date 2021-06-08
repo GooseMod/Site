@@ -12,4 +12,4 @@ theme = "hugo-html5up-alpha"
   author = ""
   copyright = "Copyright © GooseNest Team. GooseMod is not affiliated with Discord."
   design = ""
-  mainSections = []
+  mainSections = ["blog"]
