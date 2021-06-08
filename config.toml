@@ -11,6 +11,11 @@ theme = "hugo-html5up-alpha"
   design = ""
   mainSections = ["blog"]
 
+[[params.share]]
+title = "twitter"
+icon = "fa-twitter"
+link = "https://twitter.com/Goose_Mod"
+
 ## Markdown Settings
 enableEmoji = true
 [markup.goldmark]

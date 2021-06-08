@@ -1475,6 +1475,8 @@ $bannerURL: "{{ (.Site.Data.homepage.banner.image | default "images/banner.jpg")
 		position: relative;
 
 		.icons {
+			margin-bottom: 40px;
+
 			a {
 				@include vendor('transition', 'opacity #{_duration(transition)} ease-in-out');
 				opacity: 0.35;
@@ -1486,6 +1488,8 @@ $bannerURL: "{{ (.Site.Data.homepage.banner.image | default "images/banner.jpg")
 		}
 
 		.copyright {
+			margin-top: 30px;
+
 			color: _palette(fg-light);
 			font-size: 0.9em;
 			line-height: 1em;
