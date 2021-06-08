@@ -6,9 +6,9 @@ disableComments = true
 permalink = "/honk/"
 +++
 
-**GooseMod v8.8.0** has been released! Highlights:
-- **Improvements to the new home placement.**
-- **Minor store UI improvements.**
+## **GooseMod v8.8.0** has been released! Highlights:
+- ### **Improvements to the new home placement.**
+- ### **Minor store UI improvements.**
 
 ### Home
 
