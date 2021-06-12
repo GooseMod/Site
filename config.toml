@@ -2,6 +2,7 @@ languageCode = "en-us"
 title = "GooseMod"
 baseURL = "/"
 theme = "hugo-html5up-alpha"
+paginate = 2
 
 [params]
   description = "A light, secure, and easy to use Discord mod"
@@ -15,6 +16,7 @@ theme = "hugo-html5up-alpha"
 title = "twitter"
 icon = "fa-twitter"
 link = "https://twitter.com/Goose_Mod"
+
 
 ## Markdown Settings
 enableEmoji = true

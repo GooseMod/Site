@@ -31,7 +31,7 @@ features:
       - title: "Light"
         icon: "fa-bolt"
         accent: "accent2" #accent values are 1-8
-        content: "GooseMod has a small, integrated, and modular codebase allowing it to be light and fast whilst also useful."
+        content: "GooseMod has a small, integrated, and modular codebase allowing it to be light and fast whilst also powerful and easy to use."
       - title: "Store"
         icon: "fa-store"
         accent: "accent3" #accent values are 1-8
@@ -40,7 +40,7 @@ features:
         - title: "Beautiful"
           icon: "fa-eye"
           accent: "accent4" #accent values are 1-8
-          content: "Our UI heavily matches Discord's own, letting you seamlessly enhance your Discord experience."
+          content: "Our UI heavily matches Discord's own, letting you seamlessly enhance your Discord experience with themes, plugins, and more."
         - title: "Secure"
           icon: "fa-lock"
           accent: "accent6" #accent values are 1-8

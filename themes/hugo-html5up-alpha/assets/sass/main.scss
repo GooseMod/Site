@@ -2170,25 +2170,50 @@ $bannerURL: "{{ (.Site.Data.homepage.banner.image | default "images/banner.jpg")
 	96% { opacity: 0; }
 }
 
-/* #stats-container > :nth-child(1) {
-  z-index: 3;
-  animation: xfade 15s -0s infinite;
+
+.pagination {
+	display: flex;
+	justify-content: center;
+
+	list-style: none;
+
+	padding: 0;
+	gap: 16px;
+
+	margin-bottom: 6em;
 }
 
-#stats-container > :nth-child(2) {
-  z-index: 2;
-  animation: xfade 15s -5s infinite;
+.pagination > li {
+	/* background-color: #202428; */
+	border-radius: 6px;
+
+	padding: .5em .8em;
+
+	background-color: transparent;
+
+	font-size: 1.2em;
+	font-weight: 600;
+
+	cursor: pointer;
+
+	/* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 0px 2px rgba(0, 0, 0, 0.06), 0px 0px 1px rgba(0, 0, 0, 0.04); */
+	box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.5);
 }
 
-#stats-container > :nth-child(3) {
-  z-index: 1;
-  animation: xfade 15s -10s infinite;
+.pagination > li:hover {
+	background-color: rgba(255, 255, 255, 0.1);
 }
 
-@keyframes xfade {
-  0% {opacity: 0;}
-  20% {opacity: 1;}
-  33% {opacity: 1;}
-  53% {opacity: 0;}
-  100% {opacity: 0;}
-} */
+.pagination > .active {
+	background-color: rgba(255, 255, 255, 0.2);
+}
+
+.pagination > .disabled {
+	box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.2);
+	background-color: rgba(0, 0, 0, 0.2);
+}
+
+.pagination a {
+	border-bottom: none;
+	color: _palette(fg-bold);
+}

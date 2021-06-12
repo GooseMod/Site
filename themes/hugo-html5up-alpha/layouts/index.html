@@ -1,3 +1,5 @@
+{{ $paginator := .Paginate site.RegularPages }}
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -53,19 +55,19 @@
                 <!-- Features -->
                 {{ if .Site.Data.homepage.features.enable }}
                 {{ with .Site.Data.homepage.features }}
-                    <section class="box special features">
                         {{ range .rows }}
-                        <div class="features-row">
+                        <div class="row">
                             {{ range .items }}
-                            <section>
-                                <span class="icon solid major {{ .icon }} {{ .accent }}"></span>
-                                <h3>{{ .title }}</h3>
-                                <p>{{ .content }}</p>
-                            </section>
+                            <div class="col-6 col-12-narrower">
+                                <section class="box special">
+                                    <span class="icon solid major {{ .icon }} {{ .accent }}"></span>
+                                    <h3>{{ .title }}</h3>
+                                    <p>{{ .content }}</p>
+                                </section>
+                            </div>
                             {{ end }}
                         </div>
                         {{ end }}
-                    </section>
                 {{ end }}
                 {{ end }}
 
@@ -78,7 +80,7 @@
                   </header>
                   {{ end }}
                   <div class="row">
-                      {{ range first .postCount site.RegularPages }}
+                      {{ range $paginator.Pages }}
                           <div class="col-6 col-12-narrower">
                               <section class="box special">
                                   {{ with partial "bannerURL" . }}
@@ -100,6 +102,7 @@
                   </div>
                 {{ end }}
                 {{ end }}
+                {{ template "_internal/pagination.html" . }}
 
                 <section style="padding: 0;" class="box">
                     <span class="image featured" style="margin: 0; width: 100%;"><img style="border-radius: 6px;" src="https://media.discordapp.net/attachments/756146058924392545/850700371932610560/unknown.png" alt="" /></span>
