@@ -2213,6 +2213,10 @@ $bannerURL: "{{ (.Site.Data.homepage.banner.image | default "images/banner.jpg")
 	background-color: rgba(0, 0, 0, 0.2);
 }
 
+.pagination > .disabled > a {
+	color: _palette(fg-light);
+}
+
 .pagination a {
 	border-bottom: none;
 	color: _palette(fg-bold);
