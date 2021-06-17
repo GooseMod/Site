@@ -6,7 +6,7 @@ banner:
   content: "A light, secure, and easy to use Discord mod" # Change this if you want something other then the site description
   buttons:
     - title: "Install"
-      link: "https://updates.goosemod.com/#install"
+      link: "#"
       class: "primary"
       icon: "fa-cloud-download-alt"
     - title: "Discord"
@@ -71,3 +71,22 @@ cta:
   enable: false
   header: "Sign up for beta access"
   content: "Blandit varius ut praesent nascetur eu penatibus nisi risus faucibus nunc."
+
+
+installer:
+  channels:
+    - "Stable"
+    - "PTB"
+    - "Canary"
+    - "Development"
+  
+  mods:
+    major:
+      - "BetterDiscord"
+      - "SmartCord"
+    
+    minor:
+      - "GooseMod"
+  
+  tools:
+    - "React DevTools"

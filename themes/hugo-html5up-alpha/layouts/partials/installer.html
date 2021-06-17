@@ -1,0 +1,235 @@
+<div id="installer-1">
+  <header class="major">
+    <h2>Channel</h2>
+  </header>
+
+  <ul class="actions special">
+  {{ range .channels }}
+    <li><a href="#" class="button">{{ . }}</a></li>
+  {{ end }}
+  </ul>
+</div>
+
+<div id="installer-2">
+  <header class="major">
+    <h2>Install Method</h2>
+  </header>
+
+  <ul class="actions special">
+    <li><a href="#" class="button primary">Simple</a></li>
+    <li><a href="#" class="button">Advanced</a></li>
+  </ul>
+</div>
+
+<div id="installer-3">
+  <header class="major">
+    <h2>Mods</h2>
+  </header>
+
+  <ul style="margin-bottom: 6em" class="actions special selectable-one">
+  {{ range .mods.major }}
+    <li><a href="#" class="button selectable">{{ . }}</a></li>
+  {{ end }}
+  </ul>
+
+  <ul class="actions special">
+    {{ range .mods.minor }}
+      <li><a href="#" class="button selectable">{{ . }}</a></li>
+    {{ end }}
+  </ul>
+
+  <ul class="actions special final">
+    <li><a href="#" class="button primary"><i class="icon solid fa-arrow-right" style="margin-right: 5px;"></i> Continue</a></li>
+  </ul>
+</div>
+
+<div id="installer-4">
+  <header class="major">
+    <h2>Tools</h2>
+  </header>
+
+  <ul class="actions special">
+  {{ range .tools }}
+    <li><a href="#" class="button selectable">{{ . }}</a></li>
+  {{ end }}
+  </ul>
+
+  <ul class="actions special final">
+    <li><a href="#" class="button primary"><i class="icon solid fa-arrow-right" style="margin-right: 5px;"></i> Continue</a></li>
+  </ul>
+</div>
+
+<div id="installer-5">
+  <header class="major">
+    <h2>File Handling</h2>
+  </header>
+
+  <p>
+    When clicking continue, you will be asked to open a file. Please use the path below. After, save the new downloaded file over the file you opened.
+  </p>
+
+  <ul class="actions special">
+    <li id="path-for">path here</li>
+  </ul>
+
+  <ul class="actions special final">
+    <li><a href="#" class="button primary"><i class="icon solid fa-arrow-right" style="margin-right: 5px;"></i> Continue</a></li>
+  </ul>
+</div>
+
+<input type="file" id="fileSelect" style="display: none">
+
+
+<script defer>
+  for (const el of [...document.getElementsByClassName('selectable')]) {
+    const container = el.parentElement.parentElement;
+    const inOneContainer = container.classList.contains('selectable-one');
+    
+    el.onclick = () => {
+      if (el.classList.contains('selected')) {
+        el.classList.remove('selected');
+      } else {
+        if (inOneContainer) {
+          [...container.children].forEach((x) => x.children[0].classList.remove('selected'));
+        }
+        
+        el.classList.add('selected');
+      }
+    };
+  }
+  
+  let channel = '';
+  let branches = [];
+  let finalResult = '';
+  
+  const installer1 = document.getElementById('installer-1');
+  const installer2 = document.getElementById('installer-2');
+  const installer3 = document.getElementById('installer-3');
+  const installer4 = document.getElementById('installer-4');
+  const installer5 = document.getElementById('installer-5');
+  
+  const installerPath = document.getElementById('path-for');
+
+  const fileSelectEl = document.getElementById('fileSelect');
+  
+  for (const el of installer1.querySelectorAll('a')) {
+    el.onclick = () => {
+      installer1.style.display = 'none';
+      installer2.style.display = 'block';
+      
+      channel = el.textContent.toLowerCase();
+      
+      const channelSuffix = channel !== 'stable' ? channel.toLowerCase() : '';
+      switch (navigator.platform.substring(0, 3).toLowerCase()) {
+        case 'lin': {
+          installerPath.textContent = `~/.config/discord${channelSuffix}/settings.json`;
+          
+          break;
+        }
+        
+        case 'win': {
+          installerPath.textContent = `%appdata%\\discord${channelSuffix}\\settings.json`;
+          
+          break;
+        }
+        
+        case 'mac': {
+          installerPath.textContent = `~/Library/Application Support/discord${channelSuffix}/settings.json`;
+          
+          break;
+        }
+      }
+    };
+  }
+
+  for (const el of installer2.querySelectorAll('a')) {
+    el.onclick = el.textContent === 'Simple' ? () => {
+      branches = ['goosemod'];
+
+      installer2.style.display = 'none';
+      installer5.style.display = 'block';
+    } : () => {
+      installer2.style.display = 'none';
+      installer3.style.display = 'block';
+    };
+  }
+  
+  installer3.querySelector('.final a').onclick = () => {
+    branches.push(...[...installer2.querySelectorAll('a')].filter((x) => x.classList.contains('selected')).map((x) => x.textContent.toLowerCase().replace(' ', '')));
+    
+    installer3.style.display = 'none';
+    installer4.style.display = 'block';
+  };
+  
+  installer4.querySelector('.final a').onclick = () => {
+    branches.push(...[...installer3.querySelectorAll('a')].filter((x) => x.classList.contains('selected')).map((x) => x.textContent.toLowerCase().replace(' ', '')));
+    
+    installer4.style.display = 'none';
+    installer5.style.display = 'block';
+  };
+  
+  const getFileUpload = async () => {
+    fileSelectEl.value = null; // Prevent not firing change for repeated files
+    fileSelectEl.click();
+    
+    await new Promise((res) => {
+      fileSelectEl.onchange = () => {
+        res();
+      };
+    });
+    
+    fileSelectEl.onchange = undefined;
+    
+    const file = fileSelectEl.files[0];
+    
+    if (file === undefined) {
+      return undefined;
+    }
+    
+    return file;
+  };
+  
+  const downloadToFile = (content, filename, contentType) => { // https://robkendal.co.uk/blog/2020-04-17-saving-text-to-client-side-file-using-vanilla-js
+    const a = document.createElement('a');
+    const file = new Blob([content], {type: contentType});
+    
+    a.href = URL.createObjectURL(file);
+    a.download = filename;
+    a.click();
+    
+    URL.revokeObjectURL(a.href);
+  };
+  
+  installer5.querySelector('.final a').onclick = async () => {
+    const file = await getFileUpload();
+    
+    const reader = new FileReader();
+    
+    reader.readAsText(file, "UTF-8");
+    
+    const result = await new Promise((res) => {
+      reader.onload = (e) => {
+        res(e.target.result);
+      };
+    });
+    
+    let json = JSON.parse(result);
+    
+    json['UPDATE_ENDPOINT'] = `https:\/\/updates.goosemod.com/${branches.join('+')}`;
+    json['NEW_UPDATE_ENDPOINT'] = `https:\/\/updates.goosemod.com/${branches.join('+')}`;
+    
+    console.log(json);
+    
+    finalResult = JSON.stringify(json, null, 2);
+
+    downloadToFile(finalResult, 'settings.json', 'text/plain');
+  };
+
+  document.querySelector('#banner a:first-child').onclick = () => {
+    installer1.style.display = 'block';
+  };
+
+  if (location.href.includes('#install')) {
+    installer1.style.display = 'block';
+  }
+</script>
