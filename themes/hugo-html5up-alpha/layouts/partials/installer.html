@@ -77,6 +77,20 @@
   </ul>
 </div>
 
+<div id="installer-6">
+  <header class="major">
+    <h2>Restart</h2>
+  </header>
+
+  <p>
+    Restart Discord fully by quitting it via the system tray (Discord icon likely in the corner of your taskbar), then reopen it.
+  </p>
+
+  <ul class="actions special final">
+    <li><a href="#" class="button primary"><i class="icon solid fa-times" style="margin-right: 5px;"></i> Close</a></li>
+  </ul>
+</div>
+
 <input type="file" id="fileSelect" style="display: none">
 
 
@@ -107,6 +121,7 @@
   const installer3 = document.getElementById('installer-3');
   const installer4 = document.getElementById('installer-4');
   const installer5 = document.getElementById('installer-5');
+  const installer6 = document.getElementById('installer-6');
   
   const installerPath = document.getElementById('path-for');
 
@@ -223,6 +238,19 @@
     finalResult = JSON.stringify(json, null, 2);
 
     downloadToFile(finalResult, 'settings.json', 'text/plain');
+
+    installer5.style.display = 'none';
+    installer6.style.display = 'block';
+  };
+
+  document.body.onclick = (e) => {
+    if (!e.path.some((x) => x.id?.startsWith('installer-')) && e.target.parentElement.textContent !== ' Install') {
+      [...document.querySelectorAll(`[id^="installer"]`)].forEach((x) => x.style.display = 'none');
+    }
+  };
+
+  installer6.querySelector('.final a').onclick = () => {
+    installer6.style.display = 'none';
   };
 
   document.querySelector('#banner a:first-child').onclick = () => {
