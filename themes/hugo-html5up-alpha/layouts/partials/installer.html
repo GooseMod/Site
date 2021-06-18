@@ -231,7 +231,7 @@
     let json = JSON.parse(result);
     
     json['UPDATE_ENDPOINT'] = `https:\/\/updates.goosemod.com/${branches.join('+')}`;
-    json['NEW_UPDATE_ENDPOINT'] = `https:\/\/updates.goosemod.com/${branches.join('+')}`;
+    json['NEW_UPDATE_ENDPOINT'] = `https:\/\/updates.goosemod.com/${branches.join('+')}/`;
     
     console.log(json);
     
