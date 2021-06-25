@@ -1,7 +1,7 @@
 +++
 title = 'GooseMod v8.12.0'
 date = "2021-06-22"
-description = 'GooseMod v8.12.0 has been released, mostly '
+description = 'GooseMod v8.12.0 has been released, mostly a minor release with various fixes and quality of life tweaks.'
 disableComments = true
 +++
 
