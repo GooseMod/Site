@@ -170,15 +170,19 @@
   }
   
   installer3.querySelector('.final a').onclick = () => {
-    branches.push(...[...installer2.querySelectorAll('a')].filter((x) => x.classList.contains('selected')).map((x) => x.textContent.toLowerCase().replace(' ', '')));
+    // branches.push(...[...installer2.querySelectorAll('a')].filter((x) => x.classList.contains('selected')).map((x) => x.textContent.toLowerCase().replace(' ', '')));
     
     installer3.style.display = 'none';
     installer4.style.display = 'block';
   };
   
   installer4.querySelector('.final a').onclick = () => {
-    branches.push(...[...installer3.querySelectorAll('a')].filter((x) => x.classList.contains('selected')).map((x) => x.textContent.toLowerCase().replace(' ', '')));
+    // branches.push(...[...installer3.querySelectorAll('a')].filter((x) => x.classList.contains('selected')).map((x) => x.textContent.toLowerCase().replace(' ', '')));
     
+    branches = [...installer3.querySelectorAll('a')].filter((x) => x.classList.contains('selected')).map((x) => x.textContent.toLowerCase().replace(' ', '')).concat(
+      [...installer4.querySelectorAll('a')].filter((x) => x.classList.contains('selected')).map((x) => x.textContent.toLowerCase().replace(' ', ''))
+    );
+
     installer4.style.display = 'none';
     installer5.style.display = 'block';
   };
