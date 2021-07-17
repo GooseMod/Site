@@ -51,11 +51,11 @@ stats:
   rows:
     - items:
       - text: "Themes"
-        stat: "92"
+        stat: "110"
       - text: "Plugins"
-        stat: "71"
+        stat: "74"
       - text: "Developers"
-        stat: "76"
+        stat: "89"
 
 
 ### Blog ###
