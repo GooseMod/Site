@@ -2242,6 +2242,8 @@ $bannerURL: "{{ (.Site.Data.homepage.banner.image | default "images/banner.jpg")
 	background-color: #202428;
 	box-shadow: 0 0 0 1000vw rgba(0, 0, 0, 0.8);
 
+	z-index: 10;
+
 	.major:first-child {
 		margin-bottom: 5em;
 	}
@@ -2295,4 +2297,109 @@ $bannerURL: "{{ (.Site.Data.homepage.banner.image | default "images/banner.jpg")
 				color: #101418 !important;
 			}
 		}
+}
+
+#install-parent {
+	z-index: 1;
+}
+
+#install-button, #install-browser {
+	cursor: default !important;
+}
+
+#install-button ~ div {
+  position: absolute;
+  margin-top: -8px;
+  background: #202428 !important;
+  display: flex;
+  flex-flow: column;
+  height: unset;
+
+	z-index: -1;
+
+	box-shadow: inset 0 0 0 2px rgb(128, 128, 128);
+	border-radius: 6px;
+
+	display: none;
+
+	padding-top: 6px;
+}
+
+#install-button ~ div a {
+	transform: rotateX(90deg);
+}
+
+#install-button ~ div a:nth-child(1) {
+	animation: rotateX 300ms 0ms ease-in-out forwards;
+	transform-origin: top center;
+}
+
+#install-button ~ div a:nth-child(2) {
+	animation: rotateX 300ms 60ms ease forwards;
+	transform-origin: top center;
+}
+
+#install-button ~ div a:nth-child(3) {
+	animation: rotateX 300ms 120ms ease forwards;
+	transform-origin: top center;
+}
+
+@keyframes rotateX {
+  0% {
+    transform: rotateX(90deg);
+  }
+  50% {
+    transform: rotateX(20deg);
+  }
+  100% {
+    transform: rotateX(0deg);
+  }
+}
+
+#install-button:hover ~ div, #install-button ~ div:hover {
+	display: flex;
+}
+
+#install-button ~ div a {
+	border-bottom: none;
+	color: #fff;
+
+	cursor: pointer;
+
+	box-shadow: none !important;
+}
+
+#install-browser ~ div {
+	display: none;
+}
+
+#install-browser:hover ~ div, #install-browser ~ div:hover {
+	display: flex;
+}
+
+#install-browser ~ div {
+	position: absolute;
+  margin-top: 25%;
+	margin-left: calc(100% - 2px);
+  background: #202428 !important;
+  display: flex;
+  flex-flow: column;
+  height: unset;
+
+	z-index: -1;
+
+	box-shadow: inset 0 0 0 2px rgb(128, 128, 128);
+
+	display: none;
+
+	border-radius: 0 6px 6px 6px;
+}
+
+#install-button ~ div a:not(:last-of-type)::after {
+	content: '';
+	margin-left: -2em;
+	width: calc(100% + 4em);
+	display: block;
+	height: 2px;
+	background: rgb(128, 128, 128);
 }

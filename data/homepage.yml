@@ -5,10 +5,6 @@ banner:
   title: "GooseMod"
   content: "A light, secure, and easy to use Discord mod" # Change this if you want something other then the site description
   buttons:
-    - title: "Install"
-      link: "#"
-      class: "primary"
-      icon: "fa-cloud-download-alt"
     - title: "Discord"
       icon: "fa-comments"
       link: "https://goosemod.com/discord"

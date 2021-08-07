@@ -248,7 +248,7 @@
   };
 
   document.body.onclick = (e) => {
-    if (!e.path.some((x) => x.id?.startsWith('installer-')) && e.target.parentElement.textContent !== ' Install') {
+    if (!e.path.some((x) => x.id?.startsWith('installer-')) && e.target.textContent !== 'Desktop') {
       [...document.querySelectorAll(`[id^="installer"]`)].forEach((x) => x.style.display = 'none');
     }
   };
@@ -257,7 +257,7 @@
     installer6.style.display = 'none';
   };
 
-  document.querySelector('#banner a:first-child').onclick = () => {
+  document.querySelector('#install-button ~ div a:first-child').onclick = () => {
     installer1.style.display = 'block';
   };
 
