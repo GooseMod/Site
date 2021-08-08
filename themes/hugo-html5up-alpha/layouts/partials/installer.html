@@ -59,6 +59,20 @@
   </ul>
 </div>
 
+<div id="installer-batch">
+  <header class="major">
+    <h2>Run Script</h2>
+  </header>
+
+  <p>
+    A Batch script file has been downloaded, please run it to install. If you have any problems you can join our Discord server.
+  </p>
+
+  <ul class="actions special final">
+    <li><a href="#" class="button primary"><i class="icon solid fa-times" style="margin-right: 5px;"></i> Close</a></li>
+  </ul>
+</div>
+
 <div id="installer-5">
   <header class="major">
     <h2>File Handling</h2>
@@ -95,6 +109,8 @@
 
 
 <script defer>
+  let batch = false;
+
   for (const el of [...document.getElementsByClassName('selectable')]) {
     const container = el.parentElement.parentElement;
     const inOneContainer = container.classList.contains('selectable-one');
@@ -112,7 +128,7 @@
     };
   }
   
-  let channel = '';
+  let channel, channelSuffix = '';
   let branches = [];
   let finalResult = '';
   
@@ -122,6 +138,7 @@
   const installer4 = document.getElementById('installer-4');
   const installer5 = document.getElementById('installer-5');
   const installer6 = document.getElementById('installer-6');
+  const installerBatch = document.getElementById('installer-batch');
   
   const installerPath = document.getElementById('path-for');
 
@@ -134,8 +151,8 @@
       
       channel = el.textContent.toLowerCase();
       
-      const channelSuffix = channel !== 'stable' ? channel.toLowerCase() : '';
-      switch (navigator.platform.substring(0, 3).toLowerCase()) {
+      channelSuffix = channel !== 'stable' ? channel.toLowerCase() : '';
+      switch ('win') {//navigator.platform.substring(0, 3).toLowerCase()) {
         case 'lin': {
           installerPath.textContent = `~/.config/discord${channelSuffix}/settings.json`;
           
@@ -144,6 +161,7 @@
         
         case 'win': {
           installerPath.textContent = `%appdata%\\discord${channelSuffix}\\settings.json`;
+          // batch = true;
           
           break;
         }
@@ -184,7 +202,33 @@
     );
 
     installer4.style.display = 'none';
-    installer5.style.display = 'block';
+
+    if (batch) {
+      batch = `@echo off
+set path=${installerPath.textContent}
+
+(
+  for /F "tokens=*" %%A in (%path%) do (
+    echo %%A
+    if "%%A" equ "{" (
+      echo "UPDATE_ENDPOINT": "https://updates.goosemod.com/${branches.join('+')}",
+      echo "NEW_UPDATE_ENDPOINT": "https://updates.goosemod.com/${branches.join('+')}/",
+    )
+  )
+) >temp.json
+move /y temp.json %path%
+
+C:\Windows\System32\TASKKILL.exe /f /im Discord${channelSuffix}.exe
+start "" "%localappdata%\\Discord${channelSuffix}\\Update.exe" --processStart Discord${channelSuffix}.exe
+
+goto 2>nul & del "%~f0"`;
+
+      downloadToFile(batch, 'goosemod.bat', 'text/plain');
+
+      installerBatch.style.display = 'block';
+    } else {
+      installer5.style.display = 'block';
+    }
   };
   
   const getFileUpload = async () => {
@@ -251,6 +295,10 @@
     if (!e.path.some((x) => x.id?.startsWith('installer-')) && e.target.textContent !== 'Desktop') {
       [...document.querySelectorAll(`[id^="installer"]`)].forEach((x) => x.style.display = 'none');
     }
+  };
+
+  installerBatch.querySelector('.final a').onclick = () => {
+    installerBatch.style.display = 'none';
   };
 
   installer6.querySelector('.final a').onclick = () => {
