@@ -193,7 +193,7 @@ C:\\Windows\\System32\\TASKKILL.exe /f /im Discord${channelSuffix}.exe
 ) >temp.json
 move /y temp.json %path%
 
-timeout /t 1 /nobreak > NUL
+C:\\Windows\\System32\\TIMEOUT.exe /t 1 /nobreak > NUL
 
 start "" "%localappdata%\\Discord${channelSuffix}\\Update.exe" --processStart Discord${channelSuffix}.exe
 
