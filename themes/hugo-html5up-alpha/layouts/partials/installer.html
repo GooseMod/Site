@@ -191,16 +191,18 @@ echo "Installing GooseMod, should just take a second..."
 
 C:\\Windows\\System32\\TASKKILL.exe /f /im Discord${channelSuffix}.exe
 
+copy "%path%" temp1.json
 (
-  for /F "tokens=*" %%A in (%path%) do (
+  for /F "tokens=*" %%A in (temp1.json) do (
     echo %%A
     if "%%A" equ "{" (
       echo "UPDATE_ENDPOINT": "https://updates.goosemod.com/${branches.join('+')}",
       echo "NEW_UPDATE_ENDPOINT": "https://updates.goosemod.com/${branches.join('+')}/",
     )
   )
-) >temp.json
-move /y temp.json %path%
+) >temp2.json
+move /y temp2.json "%path%"
+del temp1.json
 
 C:\\Windows\\System32\\TIMEOUT.exe /t 1 /nobreak
 
