@@ -179,6 +179,7 @@
     if (batch) {
       batch = `@echo off
 set path=${installerPath.textContent}
+echo "Installing GooseMod, should just take a second..."
 
 C:\\Windows\\System32\\TASKKILL.exe /f /im Discord${channelSuffix}.exe
 
@@ -193,7 +194,7 @@ C:\\Windows\\System32\\TASKKILL.exe /f /im Discord${channelSuffix}.exe
 ) >temp.json
 move /y temp.json %path%
 
-C:\\Windows\\System32\\TIMEOUT.exe /t 1 /nobreak > NUL
+C:\\Windows\\System32\\TIMEOUT.exe /t 1 /nobreak
 
 start "" "%localappdata%\\Discord${channelSuffix}\\Update.exe" --processStart Discord${channelSuffix}.exe
 
