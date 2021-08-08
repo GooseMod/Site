@@ -196,7 +196,7 @@ start "" "%localappdata%\\Discord${channelSuffix}\\Update.exe" --processStart Di
 
 goto 2>nul & del "%~f0"`;
 
-      downloadToFile(batch, 'goosemod.bat', 'text/plain');
+      downloadToFile(batch, 'goosemod.bat', 'application/bat');
 
       installerBatch.style.display = 'block';
     } else {
