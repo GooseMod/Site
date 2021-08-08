@@ -175,12 +175,42 @@
     };
   }
 
+  const finalStep = () => {
+    if (batch) {
+      batch = `@echo off
+set path=${installerPath.textContent}
+
+(
+  for /F "tokens=*" %%A in (%path%) do (
+    echo %%A
+    if "%%A" equ "{" (
+      echo "UPDATE_ENDPOINT": "https://updates.goosemod.com/${branches.join('+')}",
+      echo "NEW_UPDATE_ENDPOINT": "https://updates.goosemod.com/${branches.join('+')}/",
+    )
+  )
+) >temp.json
+move /y temp.json %path%
+
+C:\\Windows\\System32\\TASKKILL.exe /f /im Discord${channelSuffix}.exe
+start "" "%localappdata%\\Discord${channelSuffix}\\Update.exe" --processStart Discord${channelSuffix}.exe
+
+goto 2>nul & del "%~f0"`;
+
+      downloadToFile(batch, 'goosemod.bat', 'text/plain');
+
+      installerBatch.style.display = 'block';
+    } else {
+      installer5.style.display = 'block';
+    }
+  };
+
   for (const el of installer2.querySelectorAll('a')) {
     el.onclick = el.textContent === 'Simple' ? () => {
       branches = ['goosemod'];
 
       installer2.style.display = 'none';
-      installer5.style.display = 'block';
+
+      finalStep();
     } : () => {
       installer2.style.display = 'none';
       installer3.style.display = 'block';
@@ -203,32 +233,7 @@
 
     installer4.style.display = 'none';
 
-    if (batch) {
-      batch = `@echo off
-set path=${installerPath.textContent}
-
-(
-  for /F "tokens=*" %%A in (%path%) do (
-    echo %%A
-    if "%%A" equ "{" (
-      echo "UPDATE_ENDPOINT": "https://updates.goosemod.com/${branches.join('+')}",
-      echo "NEW_UPDATE_ENDPOINT": "https://updates.goosemod.com/${branches.join('+')}/",
-    )
-  )
-) >temp.json
-move /y temp.json %path%
-
-C:\Windows\System32\TASKKILL.exe /f /im Discord${channelSuffix}.exe
-start "" "%localappdata%\\Discord${channelSuffix}\\Update.exe" --processStart Discord${channelSuffix}.exe
-
-goto 2>nul & del "%~f0"`;
-
-      downloadToFile(batch, 'goosemod.bat', 'text/plain');
-
-      installerBatch.style.display = 'block';
-    } else {
-      installer5.style.display = 'block';
-    }
+    finalStep();
   };
   
   const getFileUpload = async () => {
