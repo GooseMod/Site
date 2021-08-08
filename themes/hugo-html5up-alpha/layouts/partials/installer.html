@@ -180,6 +180,8 @@
       batch = `@echo off
 set path=${installerPath.textContent}
 
+C:\\Windows\\System32\\TASKKILL.exe /f /im Discord${channelSuffix}.exe
+
 (
   for /F "tokens=*" %%A in (%path%) do (
     echo %%A
@@ -191,7 +193,8 @@ set path=${installerPath.textContent}
 ) >temp.json
 move /y temp.json %path%
 
-C:\\Windows\\System32\\TASKKILL.exe /f /im Discord${channelSuffix}.exe
+timeout /t 1 /nobreak > NUL
+
 start "" "%localappdata%\\Discord${channelSuffix}\\Update.exe" --processStart Discord${channelSuffix}.exe
 
 goto 2>nul & del "%~f0"`;
