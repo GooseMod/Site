@@ -152,7 +152,7 @@
       channel = el.textContent.toLowerCase();
       
       channelSuffix = channel !== 'stable' ? channel.toLowerCase() : '';
-      switch ('win') {//navigator.platform.substring(0, 3).toLowerCase()) {
+      switch (navigator.platform.substring(0, 3).toLowerCase()) {
         case 'lin': {
           installerPath.textContent = `~/.config/discord${channelSuffix}/settings.json`;
           
