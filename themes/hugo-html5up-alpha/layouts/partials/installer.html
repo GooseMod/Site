@@ -190,6 +190,10 @@ set path=${installerPath.textContent}
 echo "Installing GooseMod, should just take a second..."
 
 C:\\Windows\\System32\\TASKKILL.exe /f /im Discord${channelSuffix}.exe
+C:\\Windows\\System32\\TASKKILL.exe /f /im Discord${channelSuffix}.exe
+C:\\Windows\\System32\\TASKKILL.exe /f /im Discord${channelSuffix}.exe
+
+C:\\Windows\\System32\\TIMEOUT.exe /t 3 /nobreak
 
 copy "%path%" temp1.json
 (
@@ -203,8 +207,6 @@ copy "%path%" temp1.json
 ) >temp2.json
 move /y temp2.json "%path%"
 del temp1.json
-
-C:\\Windows\\System32\\TIMEOUT.exe /t 1 /nobreak
 
 start "" "%localappdata%\\Discord${channelSuffix}\\Update.exe" --processStart Discord${channelSuffix}.exe
 
