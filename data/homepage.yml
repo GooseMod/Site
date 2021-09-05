@@ -79,7 +79,7 @@ installer:
   mods:
     major:
       - "BetterDiscord"
-      - "SmartCord"
+#      - "SmartCord"
     
     minor:
       - "GooseMod"
