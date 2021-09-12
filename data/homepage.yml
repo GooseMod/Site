@@ -46,12 +46,14 @@ features:
 stats:
   rows:
     - items:
+      - text: "Total Users"
+        stat: ">50000"
+      - text: "Module Developers"
+        stat: "94"
       - text: "Themes"
-        stat: "110"
+        stat: "115"
       - text: "Plugins"
-        stat: "74"
-      - text: "Developers"
-        stat: "89"
+        stat: "77"
 
 
 ### Blog ###
