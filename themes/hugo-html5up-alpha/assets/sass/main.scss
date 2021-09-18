@@ -2141,6 +2141,9 @@ $bannerURL: "{{ (.Site.Data.homepage.banner.image | default "images/banner.jpg")
  animation: fade-3 15s infinite;
  opacity: 0;
 }
+#stats-container > :nth-child(4) {
+ opacity: 0;
+}
 /* and more if there are more slides to show */
 @keyframes fade-1 {
  0% { opacity: 1; }
