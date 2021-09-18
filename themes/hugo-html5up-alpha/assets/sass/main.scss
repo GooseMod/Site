@@ -2116,7 +2116,7 @@ $bannerURL: "{{ (.Site.Data.homepage.banner.image | default "images/banner.jpg")
 	position: relative;
 	margin: 0 auto;
 
-	width: 250px;
+	width: 300px;
 }
 
 #stats-container > * {
@@ -2130,46 +2130,66 @@ $bannerURL: "{{ (.Site.Data.homepage.banner.image | default "images/banner.jpg")
 	text-align: center;
 }
 
+#stats-container > *:not(:first-child) {
+	opacity: 0;
+}
+
 #stats-container > :nth-child(1) {
- animation: fade-1 15s infinite;
+	animation: fade-1 12s infinite;
 }
 #stats-container > :nth-child(2) {
- animation: fade-2 15s infinite;
- opacity: 0;
+	animation: fade-2 12s infinite;
 }
 #stats-container > :nth-child(3) {
- animation: fade-3 15s infinite;
- opacity: 0;
+	animation: fade-3 12s infinite;
 }
 #stats-container > :nth-child(4) {
- opacity: 0;
+	animation: fade-4 12s infinite;
 }
+
 /* and more if there are more slides to show */
 @keyframes fade-1 {
- 0% { opacity: 1; }
- 16% { opacity: 0; }
- 32% { opacity: 0; }
- 48% { opacity: 0; }
- 64% { opacity: 0; }
- 80% { opacity: 0; }
- 96% { opacity: 1; }
+	0% { opacity: 1; }
+	12% { opacity: 0; }
+	24% { opacity: 0; }
+	36% { opacity: 0; }
+	48% { opacity: 0; }
+	60% { opacity: 0; }
+	72% { opacity: 0; }
+	84% { opacity: 0; }
+	96% { opacity: 1; }
 }
 @keyframes fade-2 {
 	0% { opacity: 0; }
-	16% { opacity: 0; }
-	32% { opacity: 1; }
+	12% { opacity: 0; }
+	24% { opacity: 1; }
+	36% { opacity: 0; }
 	48% { opacity: 0; }
-	64% { opacity: 0; }
-	80% { opacity: 0; }
+	60% { opacity: 0; }
+	72% { opacity: 0; }
+	84% { opacity: 0; }
 	96% { opacity: 0; }
 }
 @keyframes fade-3 {
 	0% { opacity: 0; }
-	16% { opacity: 0; }
-	32% { opacity: 0; }
+	12% { opacity: 0; }
+	24% { opacity: 0; }
+	36% { opacity: 0; }
+	48% { opacity: 1; }
+	60% { opacity: 0; }
+	72% { opacity: 0; }
+	84% { opacity: 0; }
+	96% { opacity: 0; }
+}
+@keyframes fade-4 {
+	0% { opacity: 0; }
+	12% { opacity: 0; }
+	24% { opacity: 0; }
+	36% { opacity: 0; }
 	48% { opacity: 0; }
-	64% { opacity: 1; }
-	80% { opacity: 0; }
+	60% { opacity: 0; }
+	72% { opacity: 1; }
+	84% { opacity: 0; }
 	96% { opacity: 0; }
 }
 
