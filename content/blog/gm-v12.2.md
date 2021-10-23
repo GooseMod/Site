@@ -1,7 +1,7 @@
 +++
-title = 'GooseMod v12.1'
-date = "2021-09-18"
-description = 'GooseMod v12.1 is now out: many various fixes, especially for the new Canary update.'
+title = 'GooseMod v12.2'
+date = "2021-10-23"
+description = 'GooseMod v12.2 is now out: many various fixes, especially for the new Canary update.'
 disableComments = true
 +++
 
