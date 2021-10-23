@@ -155,7 +155,9 @@
   for (const el of installer1.querySelectorAll('a')) {
     el.onclick = () => {
       installer1.style.display = 'none';
-      installer2.style.display = 'block';
+      //installer2.style.display = 'block';
+
+      branches = ['goosemod']; // Skip simple / advanced, always simple
       
       channel = el.textContent.toLowerCase();
       
@@ -180,6 +182,8 @@
           break;
         }
       }
+
+      finalStep(); // Skip simple / advanced, always simple
     };
   }
 
