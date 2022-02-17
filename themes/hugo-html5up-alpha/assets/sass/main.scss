@@ -2210,7 +2210,9 @@ $bannerURL: "{{ (.Site.Data.homepage.banner.image | default "images/banner.jpg")
 	/* background-color: #202428; */
 	border-radius: 6px;
 
-	padding: .5em .8em;
+	display: inline-flex;
+	align-items: center;
+	padding-left: 0em;
 
 	background-color: transparent;
 
@@ -2241,8 +2243,14 @@ $bannerURL: "{{ (.Site.Data.homepage.banner.image | default "images/banner.jpg")
 }
 
 .pagination a {
+	display: inline-block;
+	padding: .5em .8em;
 	border-bottom: none;
 	color: _palette(fg-bold);
+}
+
+.pagination > li > span {
+	padding: .5em .8em;
 }
 
 
