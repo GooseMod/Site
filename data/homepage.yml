@@ -58,7 +58,7 @@ stats:
 
 ### Blog ###
 blog:
-  enable: true
+  enable: false
   # Leave header text blank to remove entire <section>
   header: "News"
   buttonText: "Read More"
@@ -77,14 +77,14 @@ installer:
     - "PTB"
     - "Canary"
     - "Development"
-  
+
   mods:
     major:
       - "BetterDiscord"
 #      - "SmartCord"
-    
+
     minor:
       - "GooseMod"
-  
+
   tools:
     - "React DevTools"
