@@ -26,7 +26,7 @@
                             </div>
                         </div>
                     </li>
-                    
+
                 {{ range .buttons }}
                     <li><a href="{{ .link }}" class="button {{ .class }}" alt="{{ .title }}"><i class="icon solid {{ .icon }}" style="margin-right: 5px;"></i> {{ .title }}</a></li>
                 {{ end }}
@@ -112,8 +112,8 @@
                       {{ end }}
                   </div>
                 {{ end }}
-                {{ end }}
                 {{ template "_internal/pagination.html" . }}
+                {{ end }}
 
                 <section style="padding: 0;" class="box">
                     <span class="image featured" style="margin: 0; width: 100%;"><img style="border-radius: 6px;" src="https://media.discordapp.net/attachments/756146058924392545/854274691672834048/gm_ss_store.png" alt="" /></span>
