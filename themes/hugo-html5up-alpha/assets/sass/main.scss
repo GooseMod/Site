@@ -2278,7 +2278,7 @@ $bannerURL: "{{ (.Site.Data.homepage.banner.image | default "images/banner.jpg")
 	ul {
 		flex-direction: column;
 		align-items: center;
-	
+
 		gap: 1em;
 
 		li {
@@ -2326,7 +2326,7 @@ $bannerURL: "{{ (.Site.Data.homepage.banner.image | default "images/banner.jpg")
 	z-index: 1;
 }
 
-#install-button, #install-browser {
+#install-button, #install-browser, #install-desktop {
 	cursor: default !important;
 }
 
@@ -2367,6 +2367,11 @@ $bannerURL: "{{ (.Site.Data.homepage.banner.image | default "images/banner.jpg")
 	transform-origin: top center;
 }
 
+#install-button ~ div a:nth-child(4) {
+	animation: rotateX 300ms 180ms ease forwards;
+	transform-origin: top center;
+}
+
 @keyframes rotateX {
   0% {
     transform: rotateX(90deg);
@@ -2392,15 +2397,16 @@ $bannerURL: "{{ (.Site.Data.homepage.banner.image | default "images/banner.jpg")
 	box-shadow: none !important;
 }
 
-#install-browser ~ div {
+#install-browser + div, #install-desktop + div {
 	display: none;
 }
 
-#install-browser:hover ~ div, #install-browser ~ div:hover {
+#install-browser:hover + div, #install-browser + div:hover,
+#install-desktop:hover + div, #install-desktop + div:hover {
 	display: flex;
 }
 
-#install-browser ~ div {
+#install-browser + div, #install-desktop + div {
 	position: absolute;
   margin-top: 25%;
 	margin-left: calc(100% - 2px);
@@ -2416,6 +2422,10 @@ $bannerURL: "{{ (.Site.Data.homepage.banner.image | default "images/banner.jpg")
 	display: none;
 
 	border-radius: 0 6px 6px 6px;
+}
+
+#install-desktop + div {
+	margin-top: 0;
 }
 
 #install-button ~ div a:not(:last-of-type)::after {

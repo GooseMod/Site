@@ -122,7 +122,7 @@
   for (const el of [...document.getElementsByClassName('selectable')]) {
     const container = el.parentElement.parentElement;
     const inOneContainer = container.classList.contains('selectable-one');
-    
+
     el.onclick = () => {
       if (el.classList.contains('selected')) {
         el.classList.remove('selected');
@@ -130,16 +130,16 @@
         if (inOneContainer) {
           [...container.children].forEach((x) => x.children[0].classList.remove('selected'));
         }
-        
+
         el.classList.add('selected');
       }
     };
   }
-  
+
   let channel, channelSuffix = '';
   let branches = [];
   let finalResult = '';
-  
+
   const installer1 = document.getElementById('installer-1');
   const installer2 = document.getElementById('installer-2');
   const installer3 = document.getElementById('installer-3');
@@ -147,38 +147,38 @@
   const installer5 = document.getElementById('installer-5');
   const installer6 = document.getElementById('installer-6');
   const installerBatch = document.getElementById('installer-batch');
-  
+
   const installerPath = document.getElementById('path-for');
 
   const fileSelectEl = document.getElementById('fileSelect');
-  
+
   for (const el of installer1.querySelectorAll('a')) {
     el.onclick = () => {
       installer1.style.display = 'none';
       //installer2.style.display = 'block';
 
       branches = ['goosemod']; // Skip simple / advanced, always simple
-      
+
       channel = el.textContent.toLowerCase();
-      
+
       channelSuffix = channel !== 'stable' ? channel.toLowerCase() : '';
       switch (navigator.platform.substring(0, 3).toLowerCase()) {
         case 'lin': {
           installerPath.textContent = `~/.config/discord${channelSuffix}/settings.json`;
-          
+
           break;
         }
-        
+
         case 'win': {
           installerPath.textContent = `%appdata%\\discord${channelSuffix}\\settings.json`;
           batch = true;
-          
+
           break;
         }
-        
+
         case 'mac': {
           installerPath.textContent = `~/Library/Application Support/discord${channelSuffix}/settings.json`;
-          
+
           break;
         }
       }
@@ -191,13 +191,13 @@
     if (batch) {
       batch = `@echo off
 set path=${installerPath.textContent}
-echo "Installing GooseMod, should just take a second..."
+echo Installing GooseMod, please wait about 10 seconds... (your Discord will close/restart)
 
-C:\\Windows\\System32\\TASKKILL.exe /f /im Discord${channelSuffix}.exe
-C:\\Windows\\System32\\TASKKILL.exe /f /im Discord${channelSuffix}.exe
-C:\\Windows\\System32\\TASKKILL.exe /f /im Discord${channelSuffix}.exe
+C:\\Windows\\System32\\TASKKILL.exe /f /im Discord${channelSuffix}.exe >nul 2>&1
+C:\\Windows\\System32\\TASKKILL.exe /f /im Discord${channelSuffix}.exe >nul 2>&1
+C:\\Windows\\System32\\TASKKILL.exe /f /im Discord${channelSuffix}.exe >nul 2>&1
 
-C:\\Windows\\System32\\TIMEOUT.exe /t 3 /nobreak
+C:\\Windows\\System32\\TIMEOUT.exe /t 3 /nobreak >nul 2>&1
 
 copy "%path%" temp1.json
 (
@@ -213,6 +213,10 @@ move /y temp2.json "%path%"
 del temp1.json
 
 start "" "%localappdata%\\Discord${channelSuffix}\\Update.exe" --processStart Discord${channelSuffix}.exe
+
+echo.
+echo Please restart Discord from the system tray ^(bottom right icons^) by right clicking the icon ^> quit^, then reopen it^. You MUST do this even if this script restarted Discord for you^. Thanks^!
+pause
 
 goto 2>nul & del "%~f0"`;
 
@@ -236,17 +240,17 @@ goto 2>nul & del "%~f0"`;
       installer3.style.display = 'block';
     };
   }
-  
+
   installer3.querySelector('.final a').onclick = () => {
     // branches.push(...[...installer2.querySelectorAll('a')].filter((x) => x.classList.contains('selected')).map((x) => x.textContent.toLowerCase().replace(' ', '')));
-    
+
     installer3.style.display = 'none';
     installer4.style.display = 'block';
   };
-  
+
   installer4.querySelector('.final a').onclick = () => {
     // branches.push(...[...installer3.querySelectorAll('a')].filter((x) => x.classList.contains('selected')).map((x) => x.textContent.toLowerCase().replace(' ', '')));
-    
+
     branches = [...installer3.querySelectorAll('a')].filter((x) => x.classList.contains('selected')).map((x) => x.textContent.toLowerCase().replace(' ', '')).concat(
       [...installer4.querySelectorAll('a')].filter((x) => x.classList.contains('selected')).map((x) => x.textContent.toLowerCase().replace(' ', ''))
     );
@@ -255,59 +259,59 @@ goto 2>nul & del "%~f0"`;
 
     finalStep();
   };
-  
+
   const getFileUpload = async () => {
     fileSelectEl.value = null; // Prevent not firing change for repeated files
     fileSelectEl.click();
-    
+
     await new Promise((res) => {
       fileSelectEl.onchange = () => {
         res();
       };
     });
-    
+
     fileSelectEl.onchange = undefined;
-    
+
     const file = fileSelectEl.files[0];
-    
+
     if (file === undefined) {
       return undefined;
     }
-    
+
     return file;
   };
-  
+
   const downloadToFile = (content, filename, contentType) => { // https://robkendal.co.uk/blog/2020-04-17-saving-text-to-client-side-file-using-vanilla-js
     const a = document.createElement('a');
     const file = new Blob([content], {type: contentType});
-    
+
     a.href = URL.createObjectURL(file);
     a.download = filename;
     a.click();
-    
+
     URL.revokeObjectURL(a.href);
   };
-  
+
   installer5.querySelector('.final a').onclick = async () => {
     const file = await getFileUpload();
-    
+
     const reader = new FileReader();
-    
+
     reader.readAsText(file, "UTF-8");
-    
+
     const result = await new Promise((res) => {
       reader.onload = (e) => {
         res(e.target.result);
       };
     });
-    
+
     let json = JSON.parse(result);
-    
+
     json['UPDATE_ENDPOINT'] = `https:\/\/updates.goosemod.com/${branches.join('+')}`;
     json['NEW_UPDATE_ENDPOINT'] = `https:\/\/updates.goosemod.com/${branches.join('+')}/`;
-    
+
     console.log(json);
-    
+
     finalResult = JSON.stringify(json, null, 2);
 
     downloadToFile(finalResult, 'settings.json', 'text/plain');
@@ -317,8 +321,8 @@ goto 2>nul & del "%~f0"`;
   };
 
   document.body.onclick = (e) => {
-    if (!e.path.some((x) => x.id?.startsWith('installer-')) && e.target.textContent !== 'Desktop') {
-      [...document.querySelectorAll(`[id^="installer"]`)].forEach((x) => x.style.display = 'none');
+    if (!e.path.some((x) => x.id?.startsWith('installer-')) && !e.target.textContent.includes('for Discord')) {
+      [...document.querySelectorAll(`[id^="installer"]`)].forEach(x => x.style.display = 'none');
     }
   };
 
@@ -331,9 +335,38 @@ goto 2>nul & del "%~f0"`;
     installer6.style.display = 'none';
   };
 
-  document.querySelector('#install-button ~ div a:first-child').onclick = () => {
-    installer1.style.display = 'block';
-  };
+  for (const x of document.querySelectorAll('#install-desktop + div .button')) {
+    x.onclick = () => {
+      branches = ['goosemod']; // Skip simple / advanced, always simple
+
+      channel = x.textContent.split(' ').pop().toLowerCase();
+      if (channel === 'dev') channel = 'development';
+
+      channelSuffix = channel !== 'stable' ? channel.toLowerCase() : '';
+      switch (navigator.platform.substring(0, 3).toLowerCase()) {
+        case 'lin': {
+          installerPath.textContent = `~/.config/discord${channelSuffix}/settings.json`;
+
+          break;
+        }
+
+        case 'win': {
+          installerPath.textContent = `%appdata%\\discord${channelSuffix}\\settings.json`;
+          batch = true;
+
+          break;
+        }
+
+        case 'mac': {
+          installerPath.textContent = `~/Library/Application Support/discord${channelSuffix}/settings.json`;
+
+          break;
+        }
+      }
+
+      finalStep(); // Skip simple / advanced, always simple
+    };
+  }
 
   if (location.href.includes('#install')) {
     installer1.style.display = 'block';
