@@ -14,9 +14,9 @@
             {{ if .Site.Data.homepage.banner.enable }}
             {{ with .Site.Data.homepage.banner }}
                 <h2><img src="https://goosemod.com/img/logo.jpg" style="height: 1em; vertical-align: bottom; border-radius: 50%; margin-right: 5px;"> {{ .title }}</h2>
-                <p>{{ with .content }}{{ . }}{{else}}{{ $.Site.Params.description }}{{end}}</p>
+                <p>GooseMod is now EOL as of September 27th. See our server for more details.</p>
                 <ul class="actions special">
-                    <li id="install-parent"><a id="install-button" href="#" class="button primary" alt="Install" style="position: relative; padding-right: 3.5em;"><i class="icon solid fa-cloud-download-alt" style="margin-right: 5px;"></i> Install <i class="icon solid fa-chevron-down" style="position: absolute; right: 12px;"></i></a>
+                    <!-- <li id="install-parent"><a id="install-button" href="#" class="button primary" alt="Install" style="position: relative; padding-right: 3.5em;"><i class="icon solid fa-cloud-download-alt" style="margin-right: 5px;"></i> Install <i class="icon solid fa-chevron-down" style="position: absolute; right: 12px;"></i></a>
                         <div class="">
                             <a id="install-desktop" class="button" href="#">Desktop <i class="icon solid fa-chevron-right" style="position: absolute; right: 12px;"></i></a>
                             <div>
@@ -31,7 +31,7 @@
                                 <a class="button" href="https://addons.mozilla.org/addon/goosemod-for-web/">Firefox</a>
                             </div>
                         </div>
-                    </li>
+                    </li> -->
 
                 {{ range .buttons }}
                     <li><a href="{{ .link }}" class="button {{ .class }}" alt="{{ .title }}"><i class="icon solid {{ .icon }}" style="margin-right: 5px;"></i> {{ .title }}</a></li>
@@ -40,7 +40,7 @@
             {{ end }}
             {{ end }}
 
-            <section id="stats-container">
+            <!-- <section id="stats-container">
                 {{ with .Site.Data.homepage.stats }}
                         {{ range .rows }}
                             {{ range .items }}
@@ -48,7 +48,7 @@
                             {{ end }}
                         {{ end }}
                 {{ end }}
-            </section>
+            </section> -->
             </nav>
 
             <!-- Main -->
@@ -56,7 +56,7 @@
                 <!-- Highlight -->
                 {{ if .Site.Data.homepage.highlight.enable }}
                 {{ with .Site.Data.homepage.highlight }}
-                    <section class="box special">
+                    <!-- <section class="box special">
                         <header class="major">
                             {{/* Include 'safeHTML' function to render the HTML in strings */}}
                             <h2>{{ .header | safeHTML }}</h2>
@@ -65,7 +65,7 @@
                         {{ with .image }}
                         <span class="image featured"><img src="{{ . }}" alt="" /></span>
                         {{ end }}
-                    </section>
+                    </section> -->
                 {{ end }}
                 {{ end }}
 
@@ -73,7 +73,7 @@
                 {{ if .Site.Data.homepage.features.enable }}
                 {{ with .Site.Data.homepage.features }}
                         {{ range .rows }}
-                        <div class="row">
+                        <!-- <div class="row">
                             {{ range .items }}
                             <div class="col-6 col-12-narrower">
                                 <section class="box special">
@@ -83,7 +83,7 @@
                                 </section>
                             </div>
                             {{ end }}
-                        </div>
+                        </div> -->
                         {{ end }}
                 {{ end }}
                 {{ end }}
@@ -121,9 +121,9 @@
                 {{ template "_internal/pagination.html" . }}
                 {{ end }}
 
-                <section style="padding: 0;" class="box">
+                <!-- <section style="padding: 0;" class="box">
                     <span class="image featured" style="margin: 0; width: 100%;"><img style="border-radius: 6px;" src="https://media.discordapp.net/attachments/756146058924392545/854274691672834048/gm_ss_store.png" alt="" /></span>
-                </section>
+                </section> -->
             </section>
 
             <!-- CTA -->
